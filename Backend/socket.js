@@ -5,12 +5,14 @@ const captainModel = require('./models/captain.model');
 let io;
 
 function initializeSocket(server) {
-    io = socketIo(server, {
-        cors: {
-            origin: '*',
-            methods: [ 'GET', 'POST' ]
-        }
-    });
+   io = socketIo(server, {
+    cors: {
+        origin: 'https://uber-side.netlify.app', 
+        methods: ['GET', 'POST'],
+        credentials: true
+    }
+});
+
 
     io.on('connection', (socket) => {
         console.log(`Client connected: ${socket.id}`);
